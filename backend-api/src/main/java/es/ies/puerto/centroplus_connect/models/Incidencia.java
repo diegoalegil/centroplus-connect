@@ -5,15 +5,15 @@ import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "reservas")
-public class Reserva {
+@Table(name = "incidencias")
+public class Incidencia {
 
     @Id
     private Long id;
@@ -22,26 +22,27 @@ public class Reserva {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    // TODO: descomentar cuando Jorge cree Actividad.java
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_actividad")
-    // private Actividad actividad;
+    private String asunto;
+
+    private String descripcion;
 
     private String fecha;
 
     @Enumerated(EnumType.STRING)
-    private EstadoReserva estado;
+    private EstadoIncidencia estado;
 
-    public Reserva() {
+    public Incidencia() {
     }
 
-    public Reserva(Long id) {
+    public Incidencia(Long id) {
         this.id = id;
     }
 
-    public Reserva(Long id, Usuario usuario, String fecha, EstadoReserva estado) {
+    public Incidencia(Long id, Usuario usuario, String asunto, String descripcion, String fecha, EstadoIncidencia estado) {
         this.id = id;
         this.usuario = usuario;
+        this.asunto = asunto;
+        this.descripcion = descripcion;
         this.fecha = fecha;
         this.estado = estado;
     }
@@ -62,6 +63,22 @@ public class Reserva {
         this.usuario = usuario;
     }
 
+    public String getAsunto() {
+        return asunto;
+    }
+
+    public void setAsunto(String asunto) {
+        this.asunto = asunto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String getFecha() {
         return fecha;
     }
@@ -70,11 +87,11 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    public EstadoReserva getEstado() {
+    public EstadoIncidencia getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoReserva estado) {
+    public void setEstado(EstadoIncidencia estado) {
         this.estado = estado;
     }
 
@@ -89,16 +106,16 @@ public class Reserva {
             return false;
         if (this == obj)
             return true;
-        if (!(obj instanceof Reserva))
+        if (!(obj instanceof Incidencia))
             return false;
-        Reserva otra = (Reserva) obj;
+        Incidencia otra = (Incidencia) obj;
         return Objects.equals(id, otra.id);
-
     }
 
     @Override
     public String toString() {
-        return "Reserva [id=" + id + ", usuario=" + usuario + ", fecha=" + fecha + ", estado=" + estado + "]";
+        return "Incidencia [id=" + id + ", usuario=" + usuario + ", asunto=" + asunto + ", descripcion=" + descripcion
+                + ", fecha=" + fecha + ", estado=" + estado + "]";
     }
 
 }
