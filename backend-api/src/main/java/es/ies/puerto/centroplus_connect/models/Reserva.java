@@ -22,10 +22,9 @@ public class Reserva {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    // TODO: descomentar cuando Jorge cree Actividad.java
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_actividad")
-    // private Actividad actividad;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_actividad")
+    private Actividad actividad;
 
     private String fecha;
 
