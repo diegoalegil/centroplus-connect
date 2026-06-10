@@ -9,6 +9,7 @@ public class CentroPlusService {
 
     private final ObservableList<Actividad> actividades;
     private final ObservableList<Incidencia> incidencias;
+    // contador para dar id a las incidencias nuevas
     private int siguienteIdIncidencia;
 
     public CentroPlusService() {

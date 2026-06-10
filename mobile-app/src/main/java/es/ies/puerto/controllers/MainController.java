@@ -67,6 +67,7 @@ public class MainController {
         reservar.getStyleClass().add("primary-button");
         reservar.setMaxWidth(Double.MAX_VALUE);
         reservar.setOnAction(e -> {
+            // coge la actividad marcada en la lista
             Actividad seleccionada = lista.getSelectionModel().getSelectedItem();
             if (seleccionada == null) {
                 mostrarAviso("Selecciona una actividad de la lista.");
@@ -107,6 +108,7 @@ public class MainController {
             if (asunto.getText().isBlank() || descripcion.getText().isBlank()) {
                 mostrarAviso("Rellena el asunto y la descripción.");
             } else {
+                // fecha fija para simplificar
                 service.crearIncidencia(asunto.getText(), descripcion.getText(), "2026-06-11");
                 asunto.clear();
                 descripcion.clear();
