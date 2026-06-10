@@ -20,4 +20,16 @@ public class IncidenciaService {
         return incidenciaRepository.findAll();
     }
 
+    public Incidencia buscarPorId (Long id){
+        return incidenciaRepository.findById(id).orElse(null);
+    }
+
+    public Incidencia crear (Incidencia incidencia){
+        return incidenciaRepository.save(incidencia);
+    }
+
+    public void eliminar (Long id){
+        incidenciaRepository.deleteById(id);
+    }
+
 }
