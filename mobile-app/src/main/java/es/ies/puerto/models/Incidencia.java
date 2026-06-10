@@ -46,8 +46,9 @@ public class Incidencia {
         this.fecha = fecha;
     }
 
-    
-
-
+    @Override
+    public String toString() {
+        return asunto + " - " + descripcion + " (" + fecha + ")";
+    }
 
 }

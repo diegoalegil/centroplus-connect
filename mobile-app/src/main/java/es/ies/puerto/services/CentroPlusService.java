@@ -34,4 +34,10 @@ public class CentroPlusService {
         return incidencias;
     }
 
+        public void crearIncidencia(String asunto, String descripcion, String fecha) {
+        Incidencia incidencia = new Incidencia(siguienteIdIncidencia, asunto, descripcion, fecha);
+        incidencias.add(incidencia);
+        siguienteIdIncidencia++;
+    }
+
 }

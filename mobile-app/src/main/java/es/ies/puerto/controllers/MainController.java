@@ -1,6 +1,7 @@
 package es.ies.puerto.controllers;
 
 import es.ies.puerto.models.Actividad;
+import es.ies.puerto.models.Incidencia;
 import es.ies.puerto.services.CentroPlusService;
 
 import javafx.geometry.Insets;
@@ -10,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -86,10 +89,35 @@ public class MainController {
     private void mostrarIncidencias() {
         Label seccion = new Label("Incidencias");
         seccion.getStyleClass().add("section-title");
-        Label texto = new Label("Aquí irá el formulario de incidencias.");
-        VBox vista = new VBox(seccion, texto);
+
+        TextField asunto = new TextField();
+        asunto.setPromptText("Asunto");
+
+        TextArea descripcion = new TextArea();
+        descripcion.setPromptText("Descripción");
+        descripcion.setPrefRowCount(3);
+
+        Button enviar = new Button("Crear incidencia");
+        enviar.getStyleClass().add("primary-button");
+        enviar.setMaxWidth(Double.MAX_VALUE);
+
+        ListView<Incidencia> lista = new ListView<>(service.getIncidencias());
+
+        enviar.setOnAction(e -> {
+            if (asunto.getText().isBlank() || descripcion.getText().isBlank()) {
+                mostrarAviso("Rellena el asunto y la descripción.");
+            } else {
+                service.crearIncidencia(asunto.getText(), descripcion.getText(), "2026-06-11");
+                asunto.clear();
+                descripcion.clear();
+                mostrarAviso("Incidencia creada.");
+            }
+        });
+
+        VBox vista = new VBox(seccion, asunto, descripcion, enviar, lista);
         vista.setSpacing(10);
         vista.setPadding(new Insets(15));
+        VBox.setVgrow(lista, Priority.ALWAYS);
         root.setCenter(vista);
     }
 
