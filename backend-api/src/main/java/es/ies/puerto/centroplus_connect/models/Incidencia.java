@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 public class Incidencia {
 
     @Id
+    // el id lo genera la base de datos
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

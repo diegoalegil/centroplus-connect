@@ -1,6 +1,6 @@
 # centroplus-connect
 
-Aplicación de gestión para un centro académico y deportivo: usuarios, actividades, reservas e incidencias. Proyecto intermodular de 1º DAM.
+Aplicación para gestionar un centro que mezcla academia y deporte: usuarios, actividades, reservas e incidencias. Proyecto intermodular de 1º DAM.
 
 ## Estructura del repositorio
 

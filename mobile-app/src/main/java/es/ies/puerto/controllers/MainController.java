@@ -43,6 +43,7 @@ public class MainController {
         return header;
     }
 
+    // botones de abajo para moverse entre pantallas
     private HBox crearNavBar() {
         Button btnActividades = new Button("Actividades");
         btnActividades.setOnAction(e -> mostrarActividades());

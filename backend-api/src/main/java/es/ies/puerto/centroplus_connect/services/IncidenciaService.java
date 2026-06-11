@@ -20,7 +20,7 @@ public class IncidenciaService {
         return incidenciaRepository.findAll();
     }
 
-    // devuelve null si no existe
+    // si no la encuentra devuelvo null
     public Incidencia buscarPorId (Long id){
         return incidenciaRepository.findById(id).orElse(null);
     }

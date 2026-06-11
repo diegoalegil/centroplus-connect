@@ -19,6 +19,7 @@ public class CentroPlusService {
         cargarDatosIniciales();
     }
 
+    // mismas actividades que tiene la base de datos
     private void cargarDatosIniciales() {
         actividades.add(new Actividad(1, "Yoga", "DEPORTIVA", 60, 25.5, 15, 8));
         actividades.add(new Actividad(2, "Programación Java", "ACADEMICA", 90, 40.0, 20, 12));
