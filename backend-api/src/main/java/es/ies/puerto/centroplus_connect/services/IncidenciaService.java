@@ -12,24 +12,32 @@ public class IncidenciaService {
 
     private final IncidenciaRepository incidenciaRepository;
 
-    public IncidenciaService(IncidenciaRepository incidenciaRepository){
+    public IncidenciaService(IncidenciaRepository incidenciaRepository) {
         this.incidenciaRepository = incidenciaRepository;
     }
 
-    public List<Incidencia> listarTodas(){
+    public List<Incidencia> listarTodas() {
         return incidenciaRepository.findAll();
     }
 
-    // si no la encuentra devuelvo null
-    public Incidencia buscarPorId (Long id){
+    public Incidencia buscarPorId(Long id) {
+        if (id == null) {
+            return null;
+        }
         return incidenciaRepository.findById(id).orElse(null);
     }
 
-    public Incidencia crear (Incidencia incidencia){
+    public Incidencia crear(Incidencia incidencia) {
+        if (incidencia == null || incidencia.getAsunto() == null || incidencia.getAsunto().isBlank()) {
+            return null;
+        }
         return incidenciaRepository.save(incidencia);
     }
 
-    public void eliminar (Long id){
+    public void eliminar(Long id) {
+        if (id == null) {
+            return;
+        }
         incidenciaRepository.deleteById(id);
     }
 

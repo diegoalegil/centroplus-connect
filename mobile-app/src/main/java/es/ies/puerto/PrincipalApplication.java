@@ -6,6 +6,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Clase que crea la ventana de la aplicacion
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 public class PrincipalApplication extends Application {
 
     @Override

@@ -5,11 +5,16 @@ import es.ies.puerto.models.Incidencia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Servicio con los datos en memoria de la app
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 public class CentroPlusService {
 
     private final ObservableList<Actividad> actividades;
     private final ObservableList<Incidencia> incidencias;
-    // contador para dar id a las incidencias nuevas
     private int siguienteIdIncidencia;
 
     public CentroPlusService() {
@@ -19,7 +24,6 @@ public class CentroPlusService {
         cargarDatosIniciales();
     }
 
-    // mismas actividades que tiene la base de datos
     private void cargarDatosIniciales() {
         actividades.add(new Actividad(1, "Yoga", "DEPORTIVA", 60, 25.5, 15, 8));
         actividades.add(new Actividad(2, "Programación Java", "ACADEMICA", 90, 40.0, 20, 12));
@@ -36,7 +40,11 @@ public class CentroPlusService {
         return incidencias;
     }
 
-        public void crearIncidencia(String asunto, String descripcion, String fecha) {
+    public void crearIncidencia(String asunto, String descripcion, String fecha) {
+
+        if (asunto == null || asunto.isBlank() || descripcion == null || descripcion.isBlank()) {
+            return;
+        }
         Incidencia incidencia = new Incidencia(siguienteIdIncidencia, asunto, descripcion, fecha);
         incidencias.add(incidencia);
         siguienteIdIncidencia++;

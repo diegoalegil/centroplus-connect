@@ -1,5 +1,11 @@
 package es.ies.puerto.models;
 
+/**
+ * Modelo de incidencia de la app
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 public class Incidencia {
 
     private int id;
@@ -7,6 +13,13 @@ public class Incidencia {
     private String descripcion;
     private String fecha;
 
+    /**
+     * Constructor con todos los campos
+     * @param id identificador
+     * @param asunto asunto corto
+     * @param descripcion descripcion larga
+     * @param fecha fecha como texto
+     */
     public Incidencia(int id, String asunto, String descripcion, String fecha) {
         this.id = id;
         this.asunto = asunto;

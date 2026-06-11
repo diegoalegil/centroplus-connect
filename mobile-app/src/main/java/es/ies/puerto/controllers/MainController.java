@@ -18,6 +18,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controlador con las pantallas de la app
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 public class MainController {
 
     private final CentroPlusService service;
@@ -43,7 +49,6 @@ public class MainController {
         return header;
     }
 
-    // botones de abajo para moverse entre pantallas
     private HBox crearNavBar() {
         Button btnActividades = new Button("Actividades");
         btnActividades.setOnAction(e -> mostrarActividades());
@@ -68,7 +73,6 @@ public class MainController {
         reservar.getStyleClass().add("primary-button");
         reservar.setMaxWidth(Double.MAX_VALUE);
         reservar.setOnAction(e -> {
-            // coge la actividad marcada en la lista
             Actividad seleccionada = lista.getSelectionModel().getSelectedItem();
             if (seleccionada == null) {
                 mostrarAviso("Selecciona una actividad de la lista.");
@@ -109,7 +113,6 @@ public class MainController {
             if (asunto.getText().isBlank() || descripcion.getText().isBlank()) {
                 mostrarAviso("Rellena el asunto y la descripción.");
             } else {
-                // fecha fija para simplificar
                 service.crearIncidencia(asunto.getText(), descripcion.getText(), "2026-06-11");
                 asunto.clear();
                 descripcion.clear();

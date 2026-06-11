@@ -1,5 +1,11 @@
 package es.ies.puerto.models;
 
+/**
+ * Modelo de actividad de la app
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 public class Actividad {
 
     private int id;
@@ -10,6 +16,16 @@ public class Actividad {
     private int plazasMaximas;
     private int plazasOcupadas;
 
+    /**
+     * Constructor con todos los campos
+     * @param id identificador
+     * @param nombre nombre
+     * @param tipo tipo de actividad
+     * @param duracionMinutos duracion en minutos
+     * @param precio precio
+     * @param plazasMaximas plazas maximas
+     * @param plazasOcupadas plazas ocupadas
+     */
     public Actividad(int id, String nombre, String tipo, int duracionMinutos, double precio, int plazasMaximas,
             int plazasOcupadas) {
         this.id = id;

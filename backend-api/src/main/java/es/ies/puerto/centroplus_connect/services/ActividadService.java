@@ -12,23 +12,32 @@ public class ActividadService {
 
     private final ActividadRepository actividadRepository;
 
-    public ActividadService(ActividadRepository actividadRepository){
+    public ActividadService(ActividadRepository actividadRepository) {
         this.actividadRepository = actividadRepository;
     }
 
-    public List<Actividad> listarTodas(){
+    public List<Actividad> listarTodas() {
         return actividadRepository.findAll();
     }
 
-    public Actividad buscarPorId (Long id){
+    public Actividad buscarPorId(Long id) {
+        if (id == null) {
+            return null;
+        }
         return actividadRepository.findById(id).orElse(null);
     }
 
-    public Actividad crear (Actividad actividad){
+    public Actividad crear(Actividad actividad) {
+        if (actividad == null || actividad.getNombre() == null || actividad.getNombre().isBlank()) {
+            return null;
+        }
         return actividadRepository.save(actividad);
     }
 
-    public void eliminar (Long id){
+    public void eliminar(Long id) {
+        if (id == null) {
+            return;
+        }
         actividadRepository.deleteById(id);
     }
 

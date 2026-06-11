@@ -11,6 +11,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad que representa la tabla actividades
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 @Entity
 @Table(name = "actividades")
 public class Actividad {
@@ -28,13 +34,30 @@ public class Actividad {
     @Column(name = "plazas_ocupadas")
     private Integer plazasOcupadas;
 
+    /**
+     * Constructor vacio que necesita jpa
+     */
     public Actividad() {
     }
 
+    /**
+     * Constructor con el identificador
+     * @param id identificador
+     */
     public Actividad(Long id) {
         this.id = id;
     }
 
+    /**
+     * Constructor con todos los campos
+     * @param id identificador
+     * @param nombre nombre
+     * @param tipoActividad tipo de actividad
+     * @param duracion duracion en minutos
+     * @param precio precio
+     * @param plazasMaximas plazas maximas
+     * @param plazasOcupadas plazas ocupadas
+     */
     public Actividad(Long id, String nombre, TipoActividad tipoActividad, Integer duracion, Double precio, Integer plazasMaximas,
             Integer plazasOcupadas) {
         this.id = id;

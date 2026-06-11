@@ -8,6 +8,12 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 
+/**
+ * Entidad que representa la tabla usuarios
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -21,13 +27,29 @@ public class Usuario {
     @Column(name = "tipo_usuario")
     private String tipoUsuario;
 
+    /**
+     * Constructor vacio que necesita jpa
+     */
     public Usuario() {
     }
 
+    /**
+     * Constructor con el identificador
+     * @param id identificador
+     */
     public Usuario(Long id) {
         this.id = id;
     }
 
+    /**
+     * Constructor con todos los campos
+     * @param id identificador
+     * @param nombre nombre
+     * @param dni dni
+     * @param email email
+     * @param telefono telefono
+     * @param tipoUsuario tipo de usuario
+     */
     public Usuario(Long id, String nombre, String dni, String email, String telefono, String tipoUsuario) {
         this.id = id;
         this.nombre = nombre;

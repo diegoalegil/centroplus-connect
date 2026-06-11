@@ -11,6 +11,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.FetchType;
 
+/**
+ * Entidad que representa la tabla reservas
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 @Entity
 @Table(name = "reservas")
 public class Reserva {
@@ -31,13 +37,27 @@ public class Reserva {
     @Enumerated(EnumType.STRING)
     private EstadoReserva estado;
 
+    /**
+     * Constructor vacio que necesita jpa
+     */
     public Reserva() {
     }
 
+    /**
+     * Constructor con el identificador
+     * @param id identificador
+     */
     public Reserva(Long id) {
         this.id = id;
     }
 
+    /**
+     * Constructor con los campos principales
+     * @param id identificador
+     * @param usuario usuario que reserva
+     * @param fecha fecha como texto
+     * @param estado estado de la reserva
+     */
     public Reserva(Long id, Usuario usuario, String fecha, EstadoReserva estado) {
         this.id = id;
         this.usuario = usuario;

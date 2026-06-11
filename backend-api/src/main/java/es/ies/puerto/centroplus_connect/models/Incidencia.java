@@ -13,16 +13,20 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad que representa la tabla incidencias
+ * 
+ * @author diegoalegil
+ * @version 1.0.0
+ */
 @Entity
 @Table(name = "incidencias")
 public class Incidencia {
 
     @Id
-    // el id lo genera la base de datos
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // eager para que el usuario salga entero en el json
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
@@ -36,13 +40,29 @@ public class Incidencia {
     @Enumerated(EnumType.STRING)
     private EstadoIncidencia estado;
 
+    /**
+     * Constructor vacio que necesita jpa
+     */
     public Incidencia() {
     }
 
+    /**
+     * Constructor con el identificador
+     * @param id identificador
+     */
     public Incidencia(Long id) {
         this.id = id;
     }
 
+    /**
+     * Constructor con todos los campos
+     * @param id identificador
+     * @param usuario usuario que la abre
+     * @param asunto asunto corto
+     * @param descripcion descripcion larga
+     * @param fecha fecha como texto
+     * @param estado estado de la incidencia
+     */
     public Incidencia(Long id, Usuario usuario, String asunto, String descripcion, String fecha, EstadoIncidencia estado) {
         this.id = id;
         this.usuario = usuario;
